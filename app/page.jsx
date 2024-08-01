@@ -1,3 +1,4 @@
+import Footer from "@/Components/Footer";
 import Header from "@/Components/Header";
 import HeroSection from "@/Components/HeroSection";
 import Image from "next/image";
@@ -8,6 +9,7 @@ export default function Home() {
       <>
       <Header />
       <HeroSection />
+      <Footer />
       </>
     </main>
   );

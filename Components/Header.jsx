@@ -86,7 +86,7 @@ const Header = () => {
                 <Link
                   href={link.href}
                   key={link.href}
-                  className="link link-hover block py-2 md:py-0 md:inline-block hover:text-gray-600 hover:underline"
+                  className="link link-hover block py-2 md:py-0 md:inline-block hover:text-gray-500 duration-300"
                   title={link.label}
                 >
                   {link.label}
