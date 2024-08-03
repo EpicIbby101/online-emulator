@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="flex flex-col justify-between items-center text-center">
           <p className="text-sm">
             Artwork and games are copyright to their respective owners.
-            MyChildhoodGames is NOT endorsed or sponsored by Nintendo
+            MyChildhoodGames is NOT endorsed or sponsored by Nintendo.
           </p>
         </div>
       </div>
