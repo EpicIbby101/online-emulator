@@ -25,7 +25,7 @@ const SidebarSetup = ({ children }) => {
             />
             <button
               onClick={() => setIsExpanded((curr) => !curr)}
-              className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
+              className="p-1.5 rounded-lg bg-gray-50 hover:bg-emerald-100"
             >
               {isExpanded ? <ChevronFirst /> : <ChevronLast />}
             </button>
@@ -86,7 +86,7 @@ export function SidebarItem({ icon, text, active, alert }) {
 
       {!isExpanded && (
         <div
-          className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
+          className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-emerald-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}
         >
           {text}
         </div>
