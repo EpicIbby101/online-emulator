@@ -18,7 +18,7 @@ const SidebarSetup = ({ children }) => {
               src={Logo}
               alt="Logo"
               className={`overflow-hidden transition-all ${
-                isExpanded ? "w-32" : "w-0"
+                isExpanded ? "w-20" : "w-0"
               }`}
               placeholder="blur"
               priority={true}
@@ -35,7 +35,7 @@ const SidebarSetup = ({ children }) => {
             <ul className="flex-1 px-3">{children}</ul>
           </SidebarContext.Provider>
 
-          <div className="border-t flex p-3">
+          {/* <div className="border-t flex p-3">
             <Image src={Logo} alt="Logo" className="w-10 h-10 rounded-md" />
             <div
               className={`flex justify-between items-center overflow-hidden transition-all ${
@@ -50,7 +50,7 @@ const SidebarSetup = ({ children }) => {
               </div>
               <MoreVertical size={20} />
             </div>
-          </div>
+          </div> */}
         </nav>
       </aside>
     </>
