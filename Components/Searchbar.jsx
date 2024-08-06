@@ -40,12 +40,6 @@ const Searchbar = () => {
   return (
     <form className="max-w-3xl mx-auto" onSubmit={handleSearch}>
       <div className="flex relative" ref={dropdownRef}>
-        {/* <label
-          htmlFor="search-dropdown"
-          className="mb-2 text-sm font-medium text-gray-900  dark:text-white"
-        >
-          Your Email
-        </label> */}
         <button
           id="dropdown-button"
           onClick={toggleDropdown}
