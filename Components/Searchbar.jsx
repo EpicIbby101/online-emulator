@@ -1,9 +1,11 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 
 const Searchbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [searchQuery, setSearchQuery] = useState("");
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -17,14 +19,26 @@ const Searchbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [])
+  }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setIsDropdownOpen(false);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(
+      `Searching for "${searchQuery}" in category: ${selectedCategory}`
+    );
+  };
+
   return (
-    <form className="max-w-3xl mx-auto">
+    <form className="max-w-3xl mx-auto" onSubmit={handleSearch}>
       <div className="flex relative" ref={dropdownRef}>
         {/* <label
           htmlFor="search-dropdown"
@@ -38,7 +52,7 @@ const Searchbar = () => {
           className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-full hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
           type="button"
         >
-          All categories{" "}
+          {selectedCategory}
           <svg
             className="w-2.5 h-2.5 ms-2.5"
             aria-hidden="true"
@@ -56,48 +70,29 @@ const Searchbar = () => {
           </svg>
         </button>
         {isDropdownOpen && (
-        <div
-          id="dropdown"
-          className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 top-full left-0 mt-1"
-        >
-          <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="dropdown-button"
+          <div
+            id="dropdown"
+            className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 top-full left-0 mt-1"
           >
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Mockups
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Templates
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Design
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Logos
-              </button>
-            </li>
-          </ul>
-        </div>
+            <ul
+              className="py-2 text-sm text-gray-700 dark:text-gray-200"
+              aria-labelledby="dropdown-button"
+            >
+              {["All categories", "Nintendo", "Sega", "Playstation"].map(
+                (category) => (
+                  <li key={category}>
+                    <button
+                      type="button"
+                      className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      onClick={() => handleCategorySelect(category)}
+                    >
+                      {category}
+                    </button>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
         )}
         <div className="relative w-full">
           <input
@@ -106,6 +101,8 @@ const Searchbar = () => {
             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-full border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
             placeholder="Search for your favourite games..."
             required
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button
             type="submit"
@@ -127,7 +124,6 @@ const Searchbar = () => {
               />
             </svg>
             <span className="ml-2">Search</span>
-
           </button>
         </div>
       </div>
