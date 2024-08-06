@@ -1,9 +1,31 @@
-import React from "react";
+"use client"
+
+import React, { useState, useEffect, useRef } from "react";
 
 const Searchbar = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [])
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <form className="max-w-3xl mx-auto">
-      <div className="flex">
+      <div className="flex relative" ref={dropdownRef}>
         {/* <label
           htmlFor="search-dropdown"
           className="mb-2 text-sm font-medium text-gray-900  dark:text-white"
@@ -12,7 +34,7 @@ const Searchbar = () => {
         </label> */}
         <button
           id="dropdown-button"
-          data-dropdown-toggle="dropdown"
+          onClick={toggleDropdown}
           className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-full hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
           type="button"
         >
@@ -33,9 +55,10 @@ const Searchbar = () => {
             />
           </svg>
         </button>
+        {isDropdownOpen && (
         <div
           id="dropdown"
-          className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+          className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 top-full left-0 mt-1"
         >
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -75,6 +98,7 @@ const Searchbar = () => {
             </li>
           </ul>
         </div>
+        )}
         <div className="relative w-full">
           <input
             type="search"
