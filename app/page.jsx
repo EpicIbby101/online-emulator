@@ -1,6 +1,7 @@
 import Footer from "@/Components/Footer";
 import Header from "@/Components/Header";
 import HeroSection from "@/Components/HeroSection";
+import Searchbar from "@/Components/Searchbar";
 import Sidebar, { SidebarItem } from "@/Components/SidebarSetup";
 import {
   LayoutDashboard,
@@ -33,7 +34,10 @@ export default function Homepage() {
           <SidebarItem icon={<Settings size={20} />} text="Settings" />
           <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
         </Sidebar>
-        <main className="flex-1"></main>
+        <div className="flex-1 mt-3">
+          <Searchbar />
+          <main className="flex-1"></main>
+        </div>
       </div>
       <Footer />
     </div>
