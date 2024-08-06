@@ -15,11 +15,14 @@ import {
 } from "lucide-react";
 
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Homepage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Suspense>
+        <Header />
+      </Suspense>
       <HeroSection />
       <div className="flex flex-1">
         {" "}
