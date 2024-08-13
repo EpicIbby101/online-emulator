@@ -20,7 +20,7 @@ import { Suspense } from "react";
 export default function Homepage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
         <Header />
       </Suspense>
       <HeroSection />

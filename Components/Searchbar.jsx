@@ -6,9 +6,12 @@ const Searchbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All Consoles");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isClient, setIsClient] = useState(false)
   const dropdownRef = useRef(null);
 
   useEffect(() => {
+    setIsClient(true);
+
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
@@ -63,7 +66,7 @@ const Searchbar = () => {
             />
           </svg>
         </button>
-        {isDropdownOpen && (
+        {isClient && isDropdownOpen && (
           <div
             id="dropdown"
             className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 top-full left-0 mt-1"
