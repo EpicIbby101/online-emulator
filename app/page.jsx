@@ -27,15 +27,15 @@ export default function Homepage() {
       <div className="flex flex-1">
         {" "}
         <Sidebar>
-          <SidebarItem icon={<Home size={20} />} text="Home" />
-          <SidebarItem icon={<Gamepad size={20} />} text="Consoles" />
-          <SidebarItem icon={<LayoutDashboard size={20} />} text="Categories" />
-          <SidebarItem icon={<Book size={20} />} text="Blog" />
+          <SidebarItem key="home" icon={<Home size={20} />} text="Home" />
+          <SidebarItem key="consoles" icon={<Gamepad size={20} />} text="Consoles" />
+          <SidebarItem key="categories" icon={<LayoutDashboard size={20} />} text="Categories" />
+          <SidebarItem key="blog" icon={<Book size={20} />} text="Blog" />
           {/* <SidebarItem icon={<Layers size={20} />} text="Tasks"/> */}
           {/* <SidebarItem icon={<Flag size={20} />} text="Reporting" /> */}
           <hr className="my-3" />
-          <SidebarItem icon={<Settings size={20} />} text="Settings" />
-          <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
+          <SidebarItem key="settings" icon={<Settings size={20} />} text="Settings" />
+          <SidebarItem key="help" icon={<LifeBuoy size={20} />} text="Help" />
         </Sidebar>
         <div className="flex-1 mt-3">
           <Searchbar />

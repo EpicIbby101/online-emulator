@@ -10,15 +10,15 @@ import { useSearchParams } from "next/navigation";
 
 const links = [
   {
-    href: "/",
+    href: "/nintendo",
     label: "Nintendo",
   },
   {
-    href: "/",
+    href: "/sega",
     label: "Sega",
   },
   {
-    href: "/",
+    href: "/playstation",
     label: "Playstation",
   },
 ];
