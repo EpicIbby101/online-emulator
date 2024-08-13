@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 const Searchbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [selectedCategory, setSelectedCategory] = useState("All Consoles");
   const [searchQuery, setSearchQuery] = useState("");
   const dropdownRef = useRef(null);
 
@@ -33,7 +33,7 @@ const Searchbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(
-      `Searching for "${searchQuery}" in category: ${selectedCategory}`
+      `Searching for "${searchQuery}" in console: ${selectedCategory}`
     );
   };
 
@@ -72,7 +72,7 @@ const Searchbar = () => {
               className="py-2 text-sm text-gray-700 dark:text-gray-200"
               aria-labelledby="dropdown-button"
             >
-              {["All categories", "Nintendo", "Sega", "Playstation"].map(
+              {["All Consoles", "Nintendo", "Sega", "Playstation"].map(
                 (category) => (
                   <li key={category}>
                     <button
