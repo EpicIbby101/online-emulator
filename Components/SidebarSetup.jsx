@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import Logo from "@/public/logo.png";
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react";
 import Image from "next/image";
@@ -9,6 +9,12 @@ const SidebarContext = createContext();
 
 const SidebarSetup = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(true);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <>
       <aside className="h-screen ">
@@ -23,12 +29,14 @@ const SidebarSetup = ({ children }) => {
               placeholder="blur"
               priority={true}
             />
-            <button
-              onClick={() => setIsExpanded((curr) => !curr)}
-              className="p-1.5 rounded-lg bg-gray-50 hover:bg-emerald-100"
-            >
-              {isExpanded ? <ChevronFirst /> : <ChevronLast />}
-            </button>
+            {isClient && (
+              <button
+                onClick={() => setIsExpanded((curr) => !curr)}
+                className="p-1.5 rounded-lg bg-gray-50 hover:bg-emerald-100"
+              >
+                {isExpanded ? <ChevronFirst /> : <ChevronLast />}
+              </button>
+            )}
           </div>
 
           <SidebarContext.Provider value={{ isExpanded }}>
@@ -58,7 +66,7 @@ const SidebarSetup = ({ children }) => {
 };
 
 export function SidebarItem({ icon, text, active, alert }) {
-  const {isExpanded } = useContext(SidebarContext);
+  const { isExpanded } = useContext(SidebarContext);
 
   return (
     <li
